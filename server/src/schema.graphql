@@ -1,0 +1,28 @@
+scalar Date
+scalar JSON
+
+type Query {
+    test: String
+    getEmployeeData: [EmployeeData]
+    getEmployeeDatum(id: String): EmployeeData
+}
+
+type Mutation {
+    captureEmail(Email: String!): EmployeeData
+    signup(id: String!, Employee: String!, ImgSrc: String!): AuthPayload!
+    login(Email: String!, Employee: String!): AuthPayload!
+}
+
+type EmployeeData {
+    id: String,
+    Employee: String,
+    ImgSrc: String,
+    Email: String,
+    role: String!
+    createdAt: Date
+}
+
+type AuthPayload {
+    token: String!
+    employeeData: EmployeeData!
+}

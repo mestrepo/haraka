@@ -1,0 +1,57 @@
+fragment EmployeeDataFields on EmployeeData {
+  id
+  Employee
+  ImgSrc
+  Email
+  role
+  createdAt
+}
+
+mutation CaptureEmail($Email: String!) {
+  captureEmail(Email: $Email) {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+mutation Signup($id: String!,
+              $Employee: String!,
+              $ImgSrc: String!) {
+  signup(id: $id, Employee: $Employee, ImgSrc: $ImgSrc) {
+    token
+    employeeData {
+      id
+      Employee
+      ImgSrc
+      Email
+      role
+      createdAt
+    }
+  }
+}
+
+mutation Login($Email: String!, $Employee: String!) {
+  login(Email: $Email, Employee: $Employee) {
+    token
+    employeeData{
+      id
+      Employee
+      ImgSrc
+      Email
+      role
+      createdAt
+    }
+  }
+}
+
+query GetEmployeeDatum($id: String!) {
+  getEmployeeDatum(id: $id) { ...EmployeeDataFields }
+}
+
+query GetEmployeeData {
+  getEmployeeData { ...EmployeeDataFields }
+}

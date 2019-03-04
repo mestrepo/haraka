@@ -1,0 +1,189 @@
+# testing step
+query TestQuery{
+  test
+}
+
+# STEP 1: capture email of users
+
+mutation CaptureRandomEmail{
+  captureEmail(Email: "random@email.com") {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+mutation CaptureEmailOne($email1: String!){
+  captureEmail(Email: $email1) {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+mutation CaptureEmailTwo($email2: String!){
+  captureEmail(Email: $email2) {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+mutation CaptureEmailThree($email3: String!){
+  captureEmail(Email: $email3) {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+mutation CaptureEmailFour($email4: String!){
+  captureEmail(Email: $email4) {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+# STEP 2: signup user
+mutation SignupRandomEmployee {
+  signup(id: "5c78cf9be66cf3be2fab59c7",
+    Employee: "Random Employee",
+    ImgSrc: "/path/to/image") {
+    token
+    employeeData{
+      id
+      Employee
+      ImgSrc
+      Email
+      role
+      createdAt
+    }
+  }
+}
+
+mutation SignUpEmployeeTwo(
+  $id2: String!,
+  $Employee2: String!,
+  $ImgSrc: String!){
+  signup(id: $id2, Employee: $Employee2,
+    ImgSrc: $ImgSrc) {
+    token
+    employeeData{
+      id
+      Employee
+      ImgSrc
+      Email
+      role
+      createdAt
+    }
+  }
+}
+
+#STEP 3: login user
+mutation LoginRandomEmployee {
+  login(Email: "random@email.com", Employee: "Random Employee") {
+    token
+    employeeData{
+      id
+      Employee
+      ImgSrc
+      Email
+      role
+      createdAt
+    }
+  }
+}
+
+mutation LoginEmployeeTwo($email2: String!, $Employee2: String!) {
+  # signup(id: "5c6e116892815e412b68f40b", Employee: "Employee Two",
+  #   ImgSrc: "/path/to/avatar") {
+  #   token
+  #   employeeData{
+  #     id
+  #     Employee
+  #     ImgSrc
+  #     Email
+  #     role
+  #     createdAt
+  #   }
+  # }
+  login(Email: $email2, Employee: $Employee2) {
+    token
+    employeeData{
+      id
+      Employee
+      ImgSrc
+      Email
+      role
+      createdAt
+    }
+  }
+}
+
+
+
+query GetEmployeeData {
+  getEmployeeData{
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+query GetEmployeeDatum($id2: String!) {
+  getEmployeeDatum(id: $id2) {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+query GetRandomEmployeeDatum {
+  getEmployeeDatum(id: "5c78cf9be66cf3be2fab59c7") {
+    id
+    Employee
+    ImgSrc
+    Email
+    role
+    createdAt
+  }
+}
+
+# QUERY VARIABLES
+# {
+#   "email1": "f1@fast.com",
+#   "email2": "f2@fast.com",
+#   "email3": "f3@fast.com",
+#   "email4": "f4@fast.com",
+#   "ImgSrc": "/path/to/avatar",
+#   "Employee2": "Employee Two",
+#   "id2" :"5c6e116892815e412b68f40b"
+# }
+
+# HTTP HEADERS
+# For RandomEmployee with id: "5c7161b308196261632d8073"
+# {
+#   "Authorization" :"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbCI6InJhbmRvbUBlbWFpbC5jb20iLCJFbXBsb3llZSI6IlJhbmRvbSBFbXBsb3llZSIsImlhdCI6MTU1MTQyMTM3NH0.EKDZaa_y-3WTg3ZUZs4RxSYXPChSohlpOykdZb7n0hE"
+# }
+
